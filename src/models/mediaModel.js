@@ -1,12 +1,3 @@
-// const mongoose = require('mongoose');
-// const mediaSchema = mongoose.Schema({
-//     mediaId: { type: String, unique:true },
-//     mediaType: { type: String, require:true },
-
-// });
-
-// module.exports = mongoose.model("Media", mediaSchema);
-
 
 // Import Mongoose
 const mongoose = require('mongoose');

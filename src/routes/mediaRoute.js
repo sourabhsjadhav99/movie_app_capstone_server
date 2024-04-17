@@ -12,7 +12,4 @@ router.post("/addmedia", postMedia)
 router.delete("/delete/:id", deleteMedia)
 
 
-
-
-
 module.exports = router;
