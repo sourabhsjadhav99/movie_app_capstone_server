@@ -1,4 +1,4 @@
-### Media Management API
+### Entertainment App Management API
 This API provides endpoints for managing media items such as movies and TV shows, as well as user authentication and registration functionalities.
 
 ### Technologies Used
@@ -23,7 +23,7 @@ npm install
 ### Set up environment variables:
 Create a .env file in the root directory and add the following variables:
 PORT=5000
-MONGO_URL=mongodb://localhost:27017/your-database-name
+MONGO_URL=mongodb://localhost:27017/database-name
 SECRET=your_jwt_secret_key
 
 ### Start the server:
@@ -44,12 +44,12 @@ DELETE /media/delete/:id: Delete a media item by ID.
 Middleware jwtAuth is used to authenticate API requests using JSON Web Tokens.
 
 ### Models
-User Model
+## User Model
 email: String (required, unique)
 password: String (required)
 movies: Array of MongoDB ObjectIDs referencing Media model
 
-### Media Model
+## Media Model
 adult: Boolean
 backdrop_path: String
 genre_ids: Array of Numbers
