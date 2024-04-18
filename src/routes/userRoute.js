@@ -5,12 +5,7 @@ router.use(express.json());
 
 let { registerUser, loginUser, getUserByUsername, deleteUser, addFavorite } = require("../controllers/userController")
 
-router.get("/", async (req, res) => {
-    res.status(200).json({
-        data: "this is data"
-    })
-
-})
+// Defining routes for user registration, login, fetching user by email, and deleting user by ID
 router.post("/register", registerUser)
 router.post("/login", loginUser)
 router.get("/getuser/:email", getUserByUsername)

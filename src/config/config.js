@@ -1,11 +1,17 @@
 const mongoose = require("mongoose");
-let url =process.env.MONGO_URL
+
+// Retrieving the MongoDB connection URL from environment variables
+let url = process.env.MONGO_URL
+
+// Connecting to the MongoDB database using the provided URL
 mongoose
-  .connect(url, { useUnifiedTopology:true,
-    useNewUrlParser: true})
-  .then(() => {
-    console.log("Connected to the database ");
+  .connect(url, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
   })
-  .catch((err) => {
+  .then(() => {   // If the connection is successful
+    console.log("Connected to the database "); 
+  })
+  .catch((err) => { // If an error occurs
     console.log(`Error connecting to the database. n${err}`);
   });
