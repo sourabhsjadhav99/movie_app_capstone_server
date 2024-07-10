@@ -19,7 +19,7 @@ const getUserByUsername = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: "Failed",
-        message: "User not found",
+        message: "User not found"
       });
     }
 
@@ -69,7 +69,7 @@ let loginUser = async (req, res) => {
   try {
     let { email } = req.body;
     email = email.toLowerCase()
-    const user = await User.findOne({ email: email })
+    const user = await User.findOne({ email: email }).populate("movies")
     // const user = await User.findOne({ email: email }).populate({ path: "movies", model: "Media" })
     if (!user) {
       return res.status(404).send({ message: 'User not found' });
@@ -77,12 +77,12 @@ let loginUser = async (req, res) => {
     const passwordMatch = await bcrypt.compare(req.body.password, user.password);
     if (passwordMatch) {
       const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
-      res.status(201).json({ "token": token, "message": "Successufully logged in!", data: {useremail: user.email } });
+      res.status(201).json({ "token": token, "message": "Successufully logged in!", data: {useremail: user.email, movies:user.movies } });
     } else {
       res.status(401).send({ message: 'Invalid password' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error', error:error.message });
   }
 }
 

@@ -5,10 +5,7 @@ let url = process.env.MONGO_URL
 
 // Connecting to the MongoDB database using the provided URL
 mongoose
-  .connect(url, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  })
+  .connect(url)
   .then(() => {   // If the connection is successful
     console.log("Connected to the database "); 
   })
